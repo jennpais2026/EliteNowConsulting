@@ -3,267 +3,997 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EliteNow Consulting | Professional ServiceNow Architecture & Transformation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>EliteNow Consulting | Transform Enterprise Work with Elite ServiceNow Expertise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
             --midnight: #0a0e27;
-            --deep-navy: #141a33;
+            --deep-navy: #1a1f3a;
             --electric-blue: #00d4ff;
             --accent-cyan: #5df2ff;
             --soft-white: #f8f9fc;
             --steel: #8892b0;
             --gold: #ffd700;
-            --border: rgba(0, 212, 255, 0.15);
+            --shadow-dark: rgba(10, 14, 39, 0.8);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Crimson Pro', serif;
             background: var(--midnight);
             color: var(--soft-white);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .logo { font-family: 'Syne', sans-serif; text-transform: uppercase; letter-spacing: -0.02em; }
-        .mono { font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.2em; color: var(--electric-blue); }
-
+        /* Animated background */
         .bg-pattern {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0.04; z-index: -1;
-            background-image: linear-gradient(30deg, var(--electric-blue) 12%, transparent 12.5%, transparent 87%, var(--electric-blue) 87.5%, var(--electric-blue));
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: -1;
+            background-image: 
+                linear-gradient(30deg, var(--electric-blue) 12%, transparent 12.5%, transparent 87%, var(--electric-blue) 87.5%, var(--electric-blue)),
+                linear-gradient(150deg, var(--electric-blue) 12%, transparent 12.5%, transparent 87%, var(--electric-blue) 87.5%, var(--electric-blue)),
+                linear-gradient(30deg, var(--electric-blue) 12%, transparent 12.5%, transparent 87%, var(--electric-blue) 87.5%, var(--electric-blue)),
+                linear-gradient(150deg, var(--electric-blue) 12%, transparent 12.5%, transparent 87%, var(--electric-blue) 87.5%, var(--electric-blue));
             background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px;
             animation: patternShift 60s linear infinite;
         }
-        @keyframes patternShift { 0% { transform: translateY(0); } 100% { transform: translateY(140px); } }
 
+        @keyframes patternShift {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(140px); }
+        }
+
+        /* Navigation */
         nav {
             position: fixed;
-            top: 0; width: 100%; padding: 1.2rem 5%;
-            background: rgba(10, 14, 39, 0.98);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border);
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
             z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .nav-container {
-            max-width: 1400px; margin: 0 auto;
-            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .logo { font-size: 1.4rem; font-weight: 800; color: white; display: flex; align-items: center; gap: 4px; }
-        .logo span { color: var(--electric-blue); }
-
-        .contact-pill {
-            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
-            color: var(--electric-blue); text-decoration: none;
-            border: 1px solid var(--electric-blue); padding: 0.6rem 1.4rem; border-radius: 4px;
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: var(--soft-white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
         }
-        .contact-pill:hover { background: var(--electric-blue); color: var(--midnight); box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
 
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 10rem 5% 6rem; position: relative; }
-        .hero-content { max-width: 1100px; margin: 0 auto; text-align: center; }
-        .hero h1 { font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 1; margin: 1.5rem 0 2.5rem; font-weight: 800; }
-        .hero h1 .highlight { background: linear-gradient(135deg, var(--electric-blue), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.4rem; color: var(--steel); max-width: 800px; margin: 0 auto 3.5rem; }
+        .logo-elite {
+            color: var(--midnight);
+        }
 
-        section { padding: 8rem 5%; max-width: 1400px; margin: 0 auto; }
-        .section-header { margin-bottom: 5rem; text-align: center; }
-        .section-header h2 { font-size: 3rem; margin-top: 1rem; }
+        .logo-now {
+            background: linear-gradient(135deg, var(--electric-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-        .philosophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-        .philosophy-card { padding: 3.5rem; background: var(--deep-navy); border: 1px solid var(--border); }
-        .philosophy-card h3 { color: var(--electric-blue); margin-bottom: 1.5rem; font-size: 1.4rem; }
-        .philosophy-card p { color: var(--steel); font-size: 1.1rem; }
+        .logo-consulting {
+            color: var(--steel);
+            font-size: 0.75rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            display: block;
+            margin-top: -0.25rem;
+        }
 
-        .results-stats {
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--steel);
+            text-decoration: none;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--electric-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--electric-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--electric-blue);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.03em;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--electric-blue), var(--accent-cyan), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--steel);
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.7s forwards;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.9s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--electric-blue), var(--accent-cyan));
+            color: var(--midnight);
+            font-weight: 600;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--gold));
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--electric-blue);
+            border: 2px solid var(--electric-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--electric-blue);
+            color: var(--midnight);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.05), transparent);
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
-        .stat-box {
+
+        .stat-item {
             text-align: center;
-            padding: 3rem;
-            background: rgba(0, 212, 255, 0.03);
-            border: 1px solid var(--border);
+            padding: 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            background: rgba(26, 31, 58, 0.4);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
         }
-        .stat-num { font-family: 'Syne', sans-serif; font-size: 4rem; font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; }
-        .stat-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--steel); text-transform: uppercase; letter-spacing: 0.1em; }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--electric-blue);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .stat-number {
+            font-family: 'Syne', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--electric-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--steel);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 5%;
+            background: var(--deep-navy);
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--electric-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 3rem;
+            background: rgba(10, 14, 39, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            border-color: var(--electric-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--electric-blue);
+        }
+
+        .service-description {
+            color: var(--steel);
+            line-height: 1.8;
+        }
+
+        /* Approach Section */
+        .approach {
+            padding: 8rem 5%;
+        }
+
+        .approach-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .approach-visual {
+            position: relative;
+            padding: 3rem;
+        }
+
+        .visual-box {
+            padding: 2rem;
+            border: 2px solid var(--electric-blue);
+            background: rgba(0, 212, 255, 0.05);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .visual-box::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            z-index: -1;
+        }
+
+        .visual-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--electric-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .visual-text {
+            color: var(--steel);
+        }
+
+        .approach-content h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .approach-points {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .approach-points li {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .approach-points li::before {
+            content: '→';
+            color: var(--electric-blue);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .point-content {
+            flex: 1;
+        }
+
+        .point-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--electric-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .point-description {
+            color: var(--steel);
+        }
+
+        /* Case Study */
+        .case-study {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.05), transparent);
+        }
+
+        .case-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem;
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .case-header {
+            margin-bottom: 3rem;
+        }
+
+        .case-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .case-meta {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--steel);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .case-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-number {
+            font-family: 'Syne', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            color: var(--steel);
+        }
 
         .testimonial {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 3rem;
+            margin-top: 3rem;
+            padding: 2rem;
             border-left: 3px solid var(--electric-blue);
             background: rgba(0, 212, 255, 0.05);
         }
-        .testimonial p { font-size: 1.5rem; font-style: italic; color: var(--soft-white); margin-bottom: 1rem; }
-        .testimonial cite { font-family: 'IBM Plex Mono', monospace; color: var(--electric-blue); font-style: normal; }
 
-        .roadmap { background: rgba(0, 212, 255, 0.02); border-radius: 8px; border: 1px solid var(--border); padding: 4rem; }
-        .roadmap-step { display: flex; gap: 3rem; margin-bottom: 3rem; align-items: flex-start; }
-        .step-num { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: rgba(255,255,255,0.1); line-height: 1; }
-        .step-content h4 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--electric-blue); }
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--soft-white);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
 
-        .cta-group { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 1.2rem 2.8rem; font-family: 'IBM Plex Mono', monospace; text-decoration: none; text-transform: uppercase; transition: 0.4s; font-weight: 600; letter-spacing: 0.1em; border-radius: 2px; }
-        .btn-primary { background: var(--electric-blue); color: var(--midnight); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3); }
-        .btn-secondary { border: 1px solid var(--steel); color: var(--soft-white); }
-        .btn-secondary:hover { border-color: var(--electric-blue); color: var(--electric-blue); }
+        .testimonial-author {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--steel);
+        }
 
-        footer { padding: 6rem 5% 3rem; border-top: 1px solid var(--border); background: #070a1d; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; max-width: 1400px; margin: 0 auto; }
-        .footer-bottom { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--steel); }
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 5%;
+            background: var(--deep-navy);
+        }
 
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            color: var(--steel);
+            margin-bottom: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 5%;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--electric-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: var(--steel);
+            line-height: 1.8;
+        }
+
+        .footer-section h4 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--electric-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--steel);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--electric-blue);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--steel);
+        }
+
+        /* Responsive */
         @media (max-width: 968px) {
-            .footer-grid { grid-template-columns: 1fr; text-align: center; }
-            .roadmap-step { flex-direction: column; gap: 1rem; }
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .approach-container,
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .case-results {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
     <div class="bg-pattern"></div>
+
     <nav>
         <div class="nav-container">
-            <div class="logo">Elite<span>Now</span></div>
-            <a href="tel:6198004731" class="contact-pill">SECURE DISCOVERY: 619-800-4731</a>
+            <div class="logo">
+                <span class="logo-elite">Elite</span><span class="logo-now">Now</span>
+                <span class="logo-consulting">Consulting</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
-            <div class="mono">Strategic ServiceNow Architecture</div>
-            <h1>The <span class="highlight">Elite Standard</span> for Enterprise Work</h1>
-            <p>
-                [cite_start]We restore technical integrity to ServiceNow ecosystems[cite: 3, 8]. [cite_start]Led by a Certified System Administrator (CSA), we deliver configuration-first engineering for the modern enterprise[cite: 27, 128].
+            <div class="hero-label">Simplified • Streamlined • Optimized</div>
+            <h1>
+                We Architect the <span class="highlight">Future</span> of Enterprise Work
+            </h1>
+            <p class="hero-subtitle">
+                Elite ServiceNow expertise combining executive-level strategy with technical mastery. 
+                From foundational data integrity to custom business applications, we deliver results without the chaos.
             </p>
             <div class="cta-group">
                 <a href="https://calendar.app.google/n78DvHh7mN5JaQhx7" target="_blank" class="btn btn-primary">Schedule Discovery</a>
-                <a href="#results" class="btn btn-secondary">View Case Study</a>
+                <a href="#approach" class="btn btn-secondary">Our Approach</a>
             </div>
         </div>
     </section>
 
-    <section id="results" style="background: rgba(0, 212, 255, 0.01);">
-        <div class="section-header">
-            <div class="mono">Performance Evidence</div>
-            <h2>ServiceDesk Modernization: Proven ROI</h2>
-        </div>
-        <div class="results-stats">
-            <div class="stat-box">
-                <div class="stat-num">30%</div>
-                [cite_start]<div class="stat-label">Reduction in Ticket Volume [cite: 109, 110]</div>
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item fade-in">
+                <div class="stat-number">30%</div>
+                <div class="stat-label">Avg. Ticket Reduction</div>
             </div>
-            <div class="stat-box">
-                <div class="stat-num">+46</div>
-                [cite_start]<div class="stat-label">Increase in NPS Score [cite: 109, 111]</div>
+            <div class="stat-item fade-in" style="animation-delay: 0.2s;">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">MTTR Improvement</div>
             </div>
-            <div class="stat-box">
-                <div class="stat-num">40%</div>
-                [cite_start]<div class="stat-label">Reduction in MTTR [cite: 109, 112]</div>
+            <div class="stat-item fade-in" style="animation-delay: 0.4s;">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Week Transform</div>
             </div>
-        </div>
-        <div class="testimonial">
-            [cite_start]<p>"EliteNow Consulting didn't just give us a new tool; they gave us a new way of working." [cite: 113]</p>
-            [cite_start]<cite>— Director of IT Operations (7,000+ User Instance) [cite: 108, 113]</cite>
-        </div>
-    </section>
-
-    <section id="philosophy">
-        <div class="section-header">
-            <div class="mono">Engineering Rigor</div>
-            <h2>Why Organizations Trust EliteNow</h2>
-        </div>
-        <div class="philosophy-grid">
-            <div class="philosophy-card">
-                <div class="mono" style="margin-bottom:1rem">01 / Mandate</div>
-                <h3>Configuration First</h3>
-                [cite_start]<p>Prioritizing Out-of-the-Box (OOTB) functionality to ensure seamless future upgrades and platform health[cite: 27, 28].</p>
-            </div>
-            <div class="philosophy-card">
-                <div class="mono" style="margin-bottom:1rem">02 / Debt Removal</div>
-                <h3>OOTB Restoration</h3>
-                [cite_start]<p>Removing the "spaghetti code" and legacy customizations that block upgrades and slow business velocity[cite: 16, 29, 30].</p>
-            </div>
-            <div class="philosophy-card">
-                <div class="mono" style="margin-bottom:1rem">03 / Outcome</div>
-                <h3>Business Value Focus</h3>
-                [cite_start]<p>Success is measured by MTTR and CSAT KPIs, ensuring technical mastery translates to executive ROI[cite: 32, 33].</p>
+            <div class="stat-item fade-in" style="animation-delay: 0.6s;">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">OOTB Aligned</div>
             </div>
         </div>
     </section>
 
-    <section style="background: var(--deep-navy);">
-        <div class="section-header">
-            <div class="mono">Execution Framework</div>
-            [cite_start]<h2>12-Week Transformation Roadmap [cite: 58]</h2>
+    <section id="services" class="services">
+        <div class="section-header fade-in">
+            <div class="section-label">Strategic Competencies</div>
+            <h2 class="section-title">Focus Areas That Drive Results</h2>
         </div>
-        <div class="roadmap">
-            <div class="roadmap-step">
-                <div class="step-num">01</div>
-                <div class="step-content">
-                    <h4>Discovery & Foundation (Weeks 1-3)</h4>
-                    [cite_start]<p>Process workshops, data setup, and CSDM alignment to align platform state with business vision[cite: 59, 70].</p>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">⚡</div>
+                <h3 class="service-title">IT Service Management</h3>
+                <p class="service-description">
+                    Enterprise-scale ITSM implementations, Service Portal design, and automated incident routing. 
+                    We build service operations that agents actually want to use.
+                </p>
+            </div>
+            <div class="service-card fade-in" style="animation-delay: 0.2s;">
+                <div class="service-icon">🔗</div>
+                <h3 class="service-title">Strategic Integrations</h3>
+                <p class="service-description">
+                    Seamlessly connecting your enterprise ecosystem: Azure AD/Entra, Jira, Slack, Okta. 
+                    ServiceNow becomes your central nervous system.
+                </p>
+            </div>
+            <div class="service-card fade-in" style="animation-delay: 0.4s;">
+                <div class="service-icon">🛡️</div>
+                <h3 class="service-title">Platform Governance</h3>
+                <p class="service-description">
+                    Technical debt audits, upgrade readiness assessments, and OOTB restoration. 
+                    We ensure your platform stays healthy and future-proof.
+                </p>
+            </div>
+            <div class="service-card fade-in" style="animation-delay: 0.6s;">
+                <div class="service-icon">🤖</div>
+                <h3 class="service-title">Process Automation</h3>
+                <p class="service-description">
+                    Reduce manual overhead via Flow Designer and Virtual Agent. 
+                    Leverage AI capabilities while maintaining human oversight and data privacy.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="approach" class="approach">
+        <div class="approach-container">
+            <div class="approach-visual fade-in">
+                <div class="visual-box">
+                    <div class="visual-title">Configuration First</div>
+                    <p class="visual-text">
+                        We prioritize Out-of-the-Box functionality to ensure seamless future upgrades.
+                    </p>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-title">OOTB Restoration</div>
+                    <p class="visual-text">
+                        Build for the next upgrade, not just the current one. Reduce customization debt for long-term platform health.
+                    </p>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-title">No Hard-Coding</div>
+                    <p class="visual-text">
+                        Strict adherence to System Properties over hard-coded values. Clean, maintainable code standards.
+                    </p>
                 </div>
             </div>
-            <div class="roadmap-step">
-                <div class="step-num">02</div>
-                <div class="step-content">
-                    <h4>Build & Integrate (Weeks 4-9)</h4>
-                    [cite_start]<p>Configuration of core modules and Azure AD integration via 2-week sprints with Friday demos[cite: 60, 71].</p>
+            <div class="approach-content fade-in">
+                <h3>The Configuration First Mandate</h3>
+                <p style="color: var(--steel); margin-bottom: 2rem;">
+                    The hidden cost of over-customization: upgrade blockers, process drag, and fragile code 
+                    that breaks with every update. We architect differently.
+                </p>
+                <ul class="approach-points">
+                    <li>
+                        <div class="point-content">
+                            <div class="point-title">Precision Planning</div>
+                            <div class="point-description">
+                                Discovery workshops mapping vision, governance, processes, and technical foundations 
+                                before a single line of configuration.
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="point-content">
+                            <div class="point-title">Agile Delivery</div>
+                            <div class="point-description">
+                                2-week sprints with Friday demos. Complete transparency into progress, 
+                                blockers, and results.
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="point-content">
+                            <div class="point-title">Outcome Focused</div>
+                            <div class="point-description">
+                                Success measured by business KPIs like MTTR and CSAT, 
+                                not just technical Go-Live dates.
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="results" class="case-study">
+        <div class="section-header fade-in">
+            <div class="section-label">Proven Results</div>
+            <h2 class="section-title">ServiceDesk Modernization</h2>
+        </div>
+        <div class="case-container fade-in">
+            <div class="case-header">
+                <h3 class="case-title">7,000+ Users. High Volume. Real Results.</h3>
+                <p class="case-meta">Challenge: Legacy ticketing with manual overhead • Solution: Self-Service & OOTB Alignment</p>
+            </div>
+            <div class="case-results">
+                <div class="result-item">
+                    <div class="result-number">30%</div>
+                    <div class="result-label">Reduction in Ticket Volume</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-number">+46</div>
+                    <div class="result-label">Increase in NPS Score</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-number">40%</div>
+                    <div class="result-label">Reduction in MTTR</div>
                 </div>
             </div>
-            <div class="roadmap-step">
-                <div class="step-num">03</div>
-                <div class="step-content">
-                    <h4>Validation (Weeks 10-11)</h4>
-                    [cite_start]<p>Rigorous User Acceptance Testing (UAT) and targeted training sessions[cite: 61, 72].</p>
-                </div>
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    "EliteNow Consulting didn't just give us a new tool; they gave us a new way of working."
+                </p>
+                <p class="testimonial-author">— Director of IT Operations</p>
             </div>
-            <div class="roadmap-step">
-                <div class="step-num">04</div>
-                <div class="step-content">
-                    <h4>Go-Live & Hypercare (Week 12+)</h4>
-                    [cite_start]<p>Production deployment followed by 2 weeks of dedicated Hypercare support[cite: 62, 74].</p>
-                </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+        <div class="cta-container fade-in">
+            <h2>Ready to Architect Your Future?</h2>
+            <p>
+                Let's discuss how EliteNow Consulting can transform your ServiceNow instance 
+                from technical debt into strategic advantage.
+            </p>
+            <div class="cta-group" style="justify-content: center;">
+                <a href="https://calendar.app.google/n78DvHh7mN5JaQhx7" target="_blank" class="btn btn-primary">Schedule Discovery Call</a>
+                <a href="#services" class="btn btn-secondary">Learn More</a>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-grid">
-            <div>
-                <div class="logo" style="margin-bottom: 1.5rem;">Elite<span>Now</span></div>
-                <p style="color: var(--steel); max-width: 400px;">
-                    [cite_start]Elite ServiceNow architecture combining executive strategy with technical mastery[cite: 8]. [cite_start]We deliver results without the chaos[cite: 9].
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>EliteNow</h3>
+                <p>
+                    Transforming the enterprise through elite ServiceNow expertise. 
+                    We combine executive-level strategy with technical mastery to build 
+                    resilient, high-performance ecosystems.
                 </p>
             </div>
-            <div>
-                <div class="mono" style="color: white; margin-bottom: 1.5rem;">Expertise</div>
-                <ul style="list-style: none; color: var(--steel);">
-                    [cite_start]<li>ITSM Transformation [cite: 38]</li>
-                    [cite_start]<li>Platform Governance [cite: 41]</li>
-                    [cite_start]<li>OOTB Restoration [cite: 42]</li>
-                    [cite_start]<li>Strategic Integrations [cite: 40]</li>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">ITSM Implementation</a></li>
+                    <li><a href="#services">Platform Governance</a></li>
+                    <li><a href="#services">Strategic Integrations</a></li>
+                    <li><a href="#services">Process Automation</a></li>
                 </ul>
             </div>
-            <div>
-                <div class="mono" style="color: white; margin-bottom: 1.5rem;">Connect</div>
-                <p style="color: var(--electric-blue);">619-800-4731</p>
-                <p style="color: var(--steel);">partners@elitenowconsulting.com</p>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#approach">Our Approach</a></li>
+                    <li><a href="#results">Case Studies</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#security">Security Policy</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 EliteNow Consulting. [cite_start]Led by a ServiceNow Certified System Administrator[cite: 128].</p>
-            [cite_start]<p>Certified System Administrator (CSA) [cite: 128]</p>
+            <p>&copy; 2026 EliteNow Consulting. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#') && href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
