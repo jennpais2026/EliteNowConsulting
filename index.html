@@ -1067,7 +1067,7 @@
                 <h4>Contact</h4>
                 <ul class="footer-links">
                     <li><a href="tel:619-800-4731">Direct: 619-800-4731</a></li>
-                    <li><a href="#" id="contact-email-link">partners@elitenowconsulting.com</a></li>
+                    <li><a href="mailto:partners@elitenowconsulting.com">partners@elitenowconsulting.com</a></li>
                     <li><a href="#" id="contact-form-link">Contact Form</a></li>
                 </ul>
             </div>
@@ -1099,6 +1099,17 @@
     <script src="https://js-na2.hsforms.net/forms/embed/245483840.js" defer></script>
 
     <script>
+        // Load HubSpot form when modal opens
+        function loadHubSpotForm() {
+            if (typeof hbspt !== 'undefined' && hbspt.forms) {
+                hbspt.forms.create({
+                    portalId: "245483840",
+                    formId: "17a55b64-5697-4bed-a745-0d2bfbb2e5b7",
+                    target: "#contact-form"
+                });
+            }
+        }
+
         // Scroll animations
         const observerOptions = {
             threshold: 0.1,
@@ -1137,19 +1148,13 @@
         // Contact Modal
         const contactModal = document.getElementById('contact-modal');
         const contactFormLink = document.getElementById('contact-form-link');
-        const contactEmailLink = document.getElementById('contact-email-link');
         const modalClose = document.getElementById('modal-close');
 
         // Open modal from contact form link
         contactFormLink.addEventListener('click', function(e) {
             e.preventDefault();
             contactModal.classList.add('active');
-        });
-
-        // Email link opens with pre-filled content
-        contactEmailLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = 'mailto:partners@elitenowconsulting.com?subject=Partnership%20Inquiry:%20%5BTheir%20Company%20Name%5D%20x%20EliteNow%20Consulting&body=Hi%20EliteNow%20Team,%0A%0AI\'m%20interested%20in%20exploring%20a%20potential%20partnership%20between%20%5BMy%20Company%20Name%5D%20and%20EliteNow%20Consulting.%0A%0AI\'d%20love%20to%20share%20more%20about%20what%20we%20do%20and%20discuss%20how%20we%20might%20work%20together.%0A%0ABest%20regards,%0A%5BMy%20Name%5D';
+            loadHubSpotForm();
         });
 
         // Close modal
@@ -1171,14 +1176,6 @@
                     contactModal.classList.remove('active');
                 }, 2000);
             }
-        });
-    </script>
-
-    <script>
-        // Contact Form link handler
-        document.getElementById('contact-form-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = 'contact.html';
         });
     </script>
 </body>
