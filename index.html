@@ -622,7 +622,7 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 4rem;
         }
 
@@ -682,17 +682,6 @@
             color: var(--steel);
         }
 
-        /* Certifications Styling */
-        .cert-list {
-            list-style: none;
-            color: var(--steel);
-        }
-        .cert-item {
-            font-weight: 600;
-            color: var(--soft-white);
-            margin-bottom: 0.5rem;
-        }
-
         /* Responsive */
         @media (max-width: 968px) {
             .nav-links {
@@ -729,6 +718,125 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Contact Modal */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .contact-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-modal-content {
+            background: rgba(26, 31, 58, 0.8);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 8px;
+            padding: 3rem;
+            max-width: 700px;
+            width: 90%;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--electric-blue);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-cyan);
+        }
+
+        .modal-header {
+            margin-bottom: 2rem;
+            padding-right: 2rem;
+        }
+
+        .modal-header h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            color: var(--steel);
+            font-size: 1rem;
+        }
+
+        /* HubSpot Form Overrides in Modal */
+        .contact-modal .hs-form input,
+        .contact-modal .hs-form textarea,
+        .contact-modal .hs-form select {
+            background-color: rgba(10, 14, 39, 0.6) !important;
+            border: 1px solid rgba(0, 212, 255, 0.3) !important;
+            color: var(--soft-white) !important;
+            font-family: 'Crimson Pro', serif !important;
+        }
+
+        .contact-modal .hs-form input::placeholder,
+        .contact-modal .hs-form textarea::placeholder {
+            color: var(--steel) !important;
+        }
+
+        .contact-modal .hs-form input:focus,
+        .contact-modal .hs-form textarea:focus,
+        .contact-modal .hs-form select:focus {
+            border-color: var(--electric-blue) !important;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3) !important;
+        }
+
+        .contact-modal .hs-form .hs-button {
+            background: linear-gradient(135deg, var(--electric-blue), var(--accent-cyan)) !important;
+            color: var(--midnight) !important;
+            border: none !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.1em !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .contact-modal .hs-form .hs-button:hover {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--gold)) !important;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4) !important;
+        }
+
+        .contact-modal .hs-form label {
+            color: var(--soft-white) !important;
+            font-weight: 600 !important;
+        }
+
+
     </style>
 </head>
 <body>
@@ -947,17 +1055,26 @@
                 </p>
             </div>
             <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">ITSM Implementation</a></li>
+                    <li><a href="#services">Platform Governance</a></li>
+                    <li><a href="#services">Strategic Integrations</a></li>
+                    <li><a href="#services">Process Automation</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
                 <h4>Contact</h4>
                 <ul class="footer-links">
-                    <li><a href="tel:6198004731">Direct: 619-800-4731</a></li>
-                    <li><a href="mailto:partners@elitenowconsulting.com">partners@elitenowconsulting.com</a></li>
-                    <li><a href="#contact">Contact Form</a></li>
+                    <li><a href="tel:619-800-4731">Direct: 619-800-4731</a></li>
+                    <li><a href="#" id="contact-email-link">partners@elitenowconsulting.com</a></li>
+                    <li><a href="#" id="contact-form-link">Contact Form</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Certifications</h4>
-                <ul class="cert-list">
-                    <li class="cert-item">ServiceNow Certified System Administrator (CSA)</li>
+                <ul class="footer-links">
+                    <li>ServiceNow Certified System Administrator (CSA)</li>
                     <li>ITIL v4 Foundations</li>
                 </ul>
             </div>
@@ -966,6 +1083,20 @@
             <p>&copy; 2026 EliteNow Consulting. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="contact-modal">
+        <div class="contact-modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-header">
+                <h2>Get In Touch</h2>
+                <p>Fill out the form below and we'll be in touch shortly.</p>
+            </div>
+            <div id="contact-form"></div>
+        </div>
+    </div>
+
+    <script src="https://js-na2.hsforms.net/forms/embed/245483840.js" defer></script>
 
     <script>
         // Scroll animations
@@ -1001,6 +1132,53 @@
                     }
                 }
             });
+        });
+
+        // Contact Modal
+        const contactModal = document.getElementById('contact-modal');
+        const contactFormLink = document.getElementById('contact-form-link');
+        const contactEmailLink = document.getElementById('contact-email-link');
+        const modalClose = document.getElementById('modal-close');
+
+        // Open modal from contact form link
+        contactFormLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            contactModal.classList.add('active');
+        });
+
+        // Email link opens with pre-filled content
+        contactEmailLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'mailto:partners@elitenowconsulting.com?subject=Partnership%20Inquiry:%20%5BTheir%20Company%20Name%5D%20x%20EliteNow%20Consulting&body=Hi%20EliteNow%20Team,%0A%0AI\'m%20interested%20in%20exploring%20a%20potential%20partnership%20between%20%5BMy%20Company%20Name%5D%20and%20EliteNow%20Consulting.%0A%0AI\'d%20love%20to%20share%20more%20about%20what%20we%20do%20and%20discuss%20how%20we%20might%20work%20together.%0A%0ABest%20regards,%0A%5BMy%20Name%5D';
+        });
+
+        // Close modal
+        modalClose.addEventListener('click', function() {
+            contactModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        contactModal.addEventListener('click', function(e) {
+            if (e.target === contactModal) {
+                contactModal.classList.remove('active');
+            }
+        });
+
+        // Redirect after form submission
+        window.addEventListener('message', function(e) {
+            if (e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSubmitted') {
+                setTimeout(function() {
+                    contactModal.classList.remove('active');
+                }, 2000);
+            }
+        });
+    </script>
+
+    <script>
+        // Contact Form link handler
+        document.getElementById('contact-form-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'contact.html';
         });
     </script>
 </body>
