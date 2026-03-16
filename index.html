@@ -797,7 +797,10 @@
         /* HubSpot Form Overrides in Modal */
         .contact-modal .hs-form input,
         .contact-modal .hs-form textarea,
-        .contact-modal .hs-form select {
+        .contact-modal .hs-form select,
+        .contact-modal .hs-form-frame input,
+        .contact-modal .hs-form-frame textarea,
+        .contact-modal .hs-form-frame select {
             background-color: rgba(10, 14, 39, 0.6) !important;
             border: 1px solid rgba(0, 212, 255, 0.3) !important;
             color: var(--soft-white) !important;
@@ -805,18 +808,24 @@
         }
 
         .contact-modal .hs-form input::placeholder,
-        .contact-modal .hs-form textarea::placeholder {
+        .contact-modal .hs-form textarea::placeholder,
+        .contact-modal .hs-form-frame input::placeholder,
+        .contact-modal .hs-form-frame textarea::placeholder {
             color: var(--steel) !important;
         }
 
         .contact-modal .hs-form input:focus,
         .contact-modal .hs-form textarea:focus,
-        .contact-modal .hs-form select:focus {
+        .contact-modal .hs-form select:focus,
+        .contact-modal .hs-form-frame input:focus,
+        .contact-modal .hs-form-frame textarea:focus,
+        .contact-modal .hs-form-frame select:focus {
             border-color: var(--electric-blue) !important;
             box-shadow: 0 0 10px rgba(0, 212, 255, 0.3) !important;
         }
 
-        .contact-modal .hs-form .hs-button {
+        .contact-modal .hs-form .hs-button,
+        .contact-modal .hs-form-frame .hs-button {
             background: linear-gradient(135deg, var(--electric-blue), var(--accent-cyan)) !important;
             color: var(--midnight) !important;
             border: none !important;
@@ -826,17 +835,17 @@
             transition: all 0.3s ease !important;
         }
 
-        .contact-modal .hs-form .hs-button:hover {
+        .contact-modal .hs-form .hs-button:hover,
+        .contact-modal .hs-form-frame .hs-button:hover {
             background: linear-gradient(135deg, var(--accent-cyan), var(--gold)) !important;
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.4) !important;
         }
 
-        .contact-modal .hs-form label {
+        .contact-modal .hs-form label,
+        .contact-modal .hs-form-frame label {
             color: var(--soft-white) !important;
             font-weight: 600 !important;
         }
-
-
     </style>
 </head>
 <body>
@@ -1067,7 +1076,11 @@
                 <h4>Contact</h4>
                 <ul class="footer-links">
                     <li><a href="tel:619-800-4731">Direct: 619-800-4731</a></li>
-                    <li><a href="mailto:partners@elitenowconsulting.com">partners@elitenowconsulting.com</a></li>
+                    <li>
+                        <a href="mailto:partners@elitenowconsulting.com?subject=Partnership%20Inquiry%3A%20%5BYour%20Company%20Name%5D%20x%20EliteNow%20Consulting&body=Hi%20EliteNow%20Team%2C%0A%0AI%27m%20interested%20in%20exploring%20a%20potential%20partnership%20between%20%5BMy%20Company%20Name%5D%20and%20EliteNow%20Consulting.%0A%0AI%27d%20love%20to%20share%20more%20about%20what%20we%20do%20and%20discuss%20how%20we%20might%20work%20together.%0A%0ABest%20regards%2C%0AJenn%20Pais">
+                            partners@elitenowconsulting.com
+                        </a>
+                    </li>
                     <li><a href="#" id="contact-form-link">Contact Form</a></li>
                 </ul>
             </div>
@@ -1084,7 +1097,7 @@
         </div>
     </footer>
 
-    <!-- Contact Modal -->
+    <!-- Contact Modal with HubSpot hs-form-frame embed -->
     <div id="contact-modal" class="contact-modal">
         <div class="contact-modal-content">
             <button class="modal-close" id="modal-close">&times;</button>
@@ -1092,24 +1105,16 @@
                 <h2>Get In Touch</h2>
                 <p>Fill out the form below and we'll be in touch shortly.</p>
             </div>
-            <div id="contact-form"></div>
+            <script src="https://js-na2.hsforms.net/forms/embed/245483840.js" defer></script>
+            <div class="hs-form-frame"
+                 data-region="na2"
+                 data-form-id="17a55b64-5697-4bed-a745-0d2bfbb2e5b7"
+                 data-portal-id="245483840">
+            </div>
         </div>
     </div>
 
-    <script src="https://js-na2.hsforms.net/forms/embed/245483840.js" defer></script>
-
     <script>
-        // Load HubSpot form when modal opens
-        function loadHubSpotForm() {
-            if (typeof hbspt !== 'undefined' && hbspt.forms) {
-                hbspt.forms.create({
-                    portalId: "245483840",
-                    formId: "17a55b64-5697-4bed-a745-0d2bfbb2e5b7",
-                    target: "#contact-form"
-                });
-            }
-        }
-
         // Scroll animations
         const observerOptions = {
             threshold: 0.1,
@@ -1150,30 +1155,41 @@
         const contactFormLink = document.getElementById('contact-form-link');
         const modalClose = document.getElementById('modal-close');
 
-        // Open modal from contact form link
+        // Open modal from footer "Contact Form" link
         contactFormLink.addEventListener('click', function(e) {
             e.preventDefault();
             contactModal.classList.add('active');
-            loadHubSpotForm();
+            document.body.style.overflow = 'hidden';
         });
 
-        // Close modal
+        // Close modal via × button
         modalClose.addEventListener('click', function() {
             contactModal.classList.remove('active');
+            document.body.style.overflow = '';
         });
 
-        // Close modal when clicking outside
+        // Close modal when clicking the dark backdrop
         contactModal.addEventListener('click', function(e) {
             if (e.target === contactModal) {
                 contactModal.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
 
-        // Redirect after form submission
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                contactModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Auto-close modal 2s after HubSpot form is submitted
         window.addEventListener('message', function(e) {
             if (e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSubmitted') {
                 setTimeout(function() {
                     contactModal.classList.remove('active');
+                    document.body.style.overflow = '';
                 }, 2000);
             }
         });
