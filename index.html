@@ -102,35 +102,16 @@
             align-items: center;
         }
 
+        /* Logo styles updated for image */
         .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            background: var(--soft-white);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            display: flex;
+            align-items: center;
         }
 
-        .logo-elite {
-            color: var(--midnight);
-        }
-
-        .logo-now {
-            background: linear-gradient(135deg, var(--electric-blue), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .logo-consulting {
-            color: var(--steel);
-            font-size: 0.75rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
+        .logo img {
+            height: 45px; /* Adjust height as needed to fit your nav */
+            width: auto;
             display: block;
-            margin-top: -0.25rem;
         }
 
         .nav-links {
@@ -767,14 +748,8 @@
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .modal-close {
@@ -826,9 +801,9 @@
             transform: translateX(-50%);
             width: 90%;
             max-width: 600px;
-            background: #1a1f3a;
-            border: 1px solid #00d4ff;
-            color: #f8f9fc;
+            background: var(--deep-navy);
+            border: 1px solid var(--electric-blue);
+            color: var(--soft-white);
             padding: 1.5rem;
             z-index: 10000;
             box-shadow: 0 10px 40px rgba(0,0,0,0.8);
@@ -856,22 +831,22 @@
         }
 
         .cookie-accept {
-            background: #00d4ff;
-            color: #0a0e27;
+            background: var(--electric-blue);
+            color: var(--midnight);
             font-weight: 700;
         }
 
         .cookie-decline {
             background: transparent;
-            color: #8892b0;
-            border: 1px solid #8892b0;
+            color: var(--steel);
+            border: 1px solid var(--steel);
         }
     </style>
 </head>
 <body>
     
     <div id="cookie-banner">
-        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; margin-bottom: 0.5rem; color: #00d4ff;">[Privacy Protocol]</p>
+        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--electric-blue);">[Privacy Protocol]</p>
         <p>We use cookies to analyze traffic and optimize your platform experience. By clicking "Accept", you consent to our use of analytics.</p>
         <div class="cookie-btn-group">
             <button onclick="acceptCookies()" class="cookie-btn cookie-accept">Accept</button>
@@ -884,8 +859,7 @@
     <nav>
         <div class="nav-container">
             <div class="logo">
-                <span class="logo-elite">Elite</span><span class="logo-now">Now</span>
-                <span class="logo-consulting">Consulting</span>
+                <img src="EliteNowC_logowhiteSleft.png" alt="EliteNow Consulting Logo">
             </div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
