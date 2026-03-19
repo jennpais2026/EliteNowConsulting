@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-73Z8303FF2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Default consent to 'denied' for compliance
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied'
+      });
+
+      gtag('js', new Date());
+      gtag('config', 'G-73Z8303FF2');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EliteNow Consulting | Transform Enterprise Work with Elite ServiceNow Expertise</title>
@@ -69,14 +84,8 @@
         }
 
         @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .nav-container {
@@ -97,10 +106,8 @@
             border-radius: 4px;
         }
 
-        .logo-elite {
-            color: var(--midnight);
-        }
-
+        .logo-elite { color: var(--midnight); }
+        
         .logo-now {
             background: linear-gradient(135deg, var(--electric-blue), var(--accent-cyan));
             -webkit-background-clip: text;
@@ -146,13 +153,8 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--electric-blue);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+        .nav-links a:hover { color: var(--electric-blue); }
+        .nav-links a:hover::after { width: 100%; }
 
         /* Hero Section */
         .hero {
@@ -170,14 +172,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-label {
@@ -191,9 +187,7 @@
             animation: fadeIn 1s ease-out 0.3s forwards;
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { to { opacity: 1; } }
 
         .hero h1 {
             font-family: 'Syne', sans-serif;
@@ -263,9 +257,7 @@
             z-index: -1;
         }
 
-        .btn-primary:hover::before {
-            left: 0;
-        }
+        .btn-primary:hover::before { left: 0; }
 
         .btn-secondary {
             background: transparent;
@@ -384,9 +376,7 @@
             transition: left 0.6s ease;
         }
 
-        .service-card:hover::before {
-            left: 100%;
-        }
+        .service-card:hover::before { left: 100%; }
 
         .service-card:hover {
             border-color: var(--electric-blue);
@@ -490,9 +480,7 @@
             font-size: 1.5rem;
         }
 
-        .point-content {
-            flex: 1;
-        }
+        .point-content { flex: 1; }
 
         .point-title {
             font-family: 'Syne', sans-serif;
@@ -506,7 +494,7 @@
             color: var(--steel);
         }
 
-        /* Case Study */
+        /* Case Study Section */
         .case-study {
             padding: 8rem 5%;
             background: linear-gradient(180deg, rgba(0, 212, 255, 0.05), transparent);
@@ -665,9 +653,7 @@
             transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: var(--electric-blue);
-        }
+        .footer-links a:hover { color: var(--electric-blue); }
 
         .footer-bottom {
             max-width: 1400px;
@@ -684,27 +670,11 @@
 
         /* Responsive */
         @media (max-width: 968px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .approach-container,
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-
-            .case-results {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 3rem; }
+            .approach-container, .footer-container { grid-template-columns: 1fr; }
+            .case-results { grid-template-columns: 1fr; gap: 2rem; }
+            .stats-container { grid-template-columns: 1fr; }
         }
 
         /* Scroll animations */
@@ -719,9 +689,7 @@
             transform: translateY(0);
         }
 
-        /* ============================================================
-           CONTACT MODAL — white background for HubSpot readability
-           ============================================================ */
+        /* Contact Modal Styles */
         .contact-modal {
             display: none;
             position: fixed;
@@ -741,7 +709,6 @@
             justify-content: center;
         }
 
-        /* ✅ WHITE background so HubSpot form text is fully readable */
         .contact-modal-content {
             background: #ffffff;
             border: none;
@@ -755,17 +722,10 @@
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Dark close button on white background */
         .modal-close {
             position: absolute;
             top: 1.2rem;
@@ -779,11 +739,8 @@
             transition: color 0.3s ease;
         }
 
-        .modal-close:hover {
-            color: #000000;
-        }
+        .modal-close:hover { color: #000000; }
 
-        /* Dark header text on white */
         .modal-header {
             margin-bottom: 1.5rem;
             padding-right: 2rem;
@@ -802,15 +759,73 @@
             font-size: 1rem;
         }
 
-        /* HubSpot form renders cleanly on white — minimal overrides needed */
         .contact-modal-content .hs-form-frame,
         .contact-modal-content .hs-form {
             color: #111111 !important;
         }
 
+        /* Cookie Banner Styles */
+        #cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: var(--deep-navy);
+            border: 1px solid var(--electric-blue);
+            color: var(--soft-white);
+            padding: 1.5rem;
+            z-index: 10000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .cookie-btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .cookie-btn {
+            padding: 0.6rem 1.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .cookie-accept {
+            background: var(--electric-blue);
+            color: var(--midnight);
+            font-weight: 700;
+        }
+
+        .cookie-decline {
+            background: transparent;
+            color: var(--steel);
+            border: 1px solid var(--steel);
+        }
     </style>
 </head>
 <body>
+
+    <div id="cookie-banner">
+        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--electric-blue);">[Privacy Protocol]</p>
+        <p>We use cookies to analyze traffic and optimize your platform experience. By clicking "Accept", you consent to our use of analytics.</p>
+        <div class="cookie-btn-group">
+            <button onclick="acceptCookies()" class="cookie-btn cookie-accept">Accept</button>
+            <button onclick="declineCookies()" class="cookie-btn cookie-decline">Decline</button>
+        </div>
+    </div>
+
     <div class="bg-pattern"></div>
 
     <nav>
@@ -1038,14 +1053,7 @@
                 <h4>Contact</h4>
                 <ul class="footer-links">
                     <li><a href="tel:619-800-4731">Direct: 619-800-4731</a></li>
-                    <!-- ✅ FIXED: mailto opens default email client with pre-filled subject + body -->
-                    <li>
-                        <a id="partner-email-link"
-                           href="mailto:partners@elitenowconsulting.com?subject=Partnership%20Inquiry%3A%20%5BYour%20Company%20Name%5D%20x%20EliteNow%20Consulting&body=Hi%20EliteNow%20Team%2C%0A%0AI%27m%20interested%20in%20exploring%20a%20potential%20partnership%20between%20%5BMy%20Company%20Name%5D%20and%20EliteNow%20Consulting.%0A%0AI%27d%20love%20to%20share%20more%20about%20what%20we%20do%20and%20discuss%20how%20we%20might%20work%20together.%0A%0ABest%20regards%2C%0AJenn%20Pais">
-                            partners@elitenowconsulting.com
-                        </a>
-                    </li>
-                    <!-- ✅ FIXED: Opens HubSpot form in white-background modal -->
+                    <li><a id="partner-email-link" href="#">partners@elitenowconsulting.com</a></li>
                     <li><a href="#" id="contact-form-link">Contact Form</a></li>
                 </ul>
             </div>
@@ -1062,7 +1070,6 @@
         </div>
     </footer>
 
-    <!-- Contact Modal — white background with HubSpot hs-form-frame embed -->
     <div id="contact-modal" class="contact-modal">
         <div class="contact-modal-content">
             <button class="modal-close" id="modal-close">&times;</button>
@@ -1098,11 +1105,11 @@
             observer.observe(el);
         });
 
-        // Smooth scroll — only fires on pure # hash anchors, never touches mailto: links
+        // Smooth scroll - Modified to ensure it does not break modal links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href.startsWith('#') && href.length > 1) {
+                if (href !== "#" && href.startsWith('#')) {
                     e.preventDefault();
                     const target = document.querySelector(href);
                     if (target) {
@@ -1115,32 +1122,26 @@
             });
         });
 
-        // ✅ FIX: Explicitly wire the mailto link so nothing can intercept it
-        document.getElementById('partner-email-link').addEventListener('click', function(e) {
-            e.stopPropagation();
-            window.location.href = this.getAttribute('href');
-        });
-
-        // Contact Modal
-        const contactModal    = document.getElementById('contact-modal');
+        // Contact Modal Logic (Handles both Email text and Contact Form link)
+        const contactModal = document.getElementById('contact-modal');
         const contactFormLink = document.getElementById('contact-form-link');
-        const modalClose      = document.getElementById('modal-close');
+        const partnerEmailLink = document.getElementById('partner-email-link');
+        const modalClose = document.getElementById('modal-close');
 
-        // Open modal
-        contactFormLink.addEventListener('click', function(e) {
+        function openModal(e) {
             e.preventDefault();
-            e.stopPropagation();
             contactModal.classList.add('active');
             document.body.style.overflow = 'hidden';
-        });
+        }
 
-        // Close via × button
+        contactFormLink.addEventListener('click', openModal);
+        partnerEmailLink.addEventListener('click', openModal);
+
         modalClose.addEventListener('click', function() {
             contactModal.classList.remove('active');
             document.body.style.overflow = '';
         });
 
-        // Close by clicking dark backdrop
         contactModal.addEventListener('click', function(e) {
             if (e.target === contactModal) {
                 contactModal.classList.remove('active');
@@ -1148,7 +1149,6 @@
             }
         });
 
-        // Close with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && contactModal.classList.contains('active')) {
                 contactModal.classList.remove('active');
@@ -1163,6 +1163,27 @@
                     contactModal.classList.remove('active');
                     document.body.style.overflow = '';
                 }, 2000);
+            }
+        });
+
+        // Cookie Banner Logic
+        function acceptCookies() {
+            gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'analytics_storage': 'granted'
+            });
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'accepted');
+        }
+
+        function declineCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'declined');
+        }
+
+        window.addEventListener('load', () => {
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('cookie-banner').style.display = 'block';
             }
         });
     </script>
