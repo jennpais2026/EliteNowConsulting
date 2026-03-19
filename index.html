@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-73Z8303FF2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Default consent to 'denied' for compliance
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied'
+      });
+
+      gtag('js', new Date());
+      gtag('config', 'G-73Z8303FF2');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EliteNow Consulting | Transform Enterprise Work with Elite ServiceNow Expertise</title>
@@ -350,8 +365,7 @@
 
         .section-title {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4rem);<br>            font-weight: 800;
             line-height: 1.2;
             letter-spacing: -0.02em;
         }
@@ -682,6 +696,61 @@
             color: var(--steel);
         }
 
+        /* Cookie Banner Styling */
+        #cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: var(--deep-navy);
+            border: 1px solid var(--electric-blue);
+            color: var(--soft-white);
+            padding: 1.5rem;
+            z-index: 10000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            animation: slideUpBanner 0.5s ease-out;
+        }
+
+        @keyframes slideUpBanner {
+            from { transform: translate(-50%, 100px); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+
+        .cookie-btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .cookie-btn {
+            padding: 0.6rem 1.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .cookie-accept {
+            background: var(--electric-blue);
+            color: var(--midnight);
+            border: none;
+            font-weight: 700;
+        }
+
+        .cookie-decline {
+            background: transparent;
+            color: var(--steel);
+            border: 1px solid var(--steel);
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .nav-links {
@@ -719,9 +788,6 @@
             transform: translateY(0);
         }
 
-        /* ============================================================
-           CONTACT MODAL — white background for HubSpot readability
-           ============================================================ */
         .contact-modal {
             display: none;
             position: fixed;
@@ -741,7 +807,6 @@
             justify-content: center;
         }
 
-        /* ✅ WHITE background so HubSpot form text is fully readable */
         .contact-modal-content {
             background: #ffffff;
             border: none;
@@ -755,17 +820,10 @@
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Dark close button on white background */
         .modal-close {
             position: absolute;
             top: 1.2rem;
@@ -776,14 +834,8 @@
             font-size: 2rem;
             cursor: pointer;
             line-height: 1;
-            transition: color 0.3s ease;
         }
 
-        .modal-close:hover {
-            color: #000000;
-        }
-
-        /* Dark header text on white */
         .modal-header {
             margin-bottom: 1.5rem;
             padding-right: 2rem;
@@ -793,21 +845,12 @@
             font-family: 'Syne', sans-serif;
             font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: 0.4rem;
             color: #0a0e27;
         }
 
         .modal-header p {
             color: #555555;
-            font-size: 1rem;
         }
-
-        /* HubSpot form renders cleanly on white — minimal overrides needed */
-        .contact-modal-content .hs-form-frame,
-        .contact-modal-content .hs-form {
-            color: #111111 !important;
-        }
-
     </style>
 </head>
 <body>
@@ -828,12 +871,19 @@
         </div>
     </nav>
 
+    <div id="cookie-banner">
+        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--electric-blue);">[Privacy Protocol]</p>
+        <p>We use cookies to analyze traffic and optimize your platform experience. By clicking "Accept", you consent to our use of analytics.</p>
+        <div class="cookie-btn-group">
+            <button onclick="acceptCookies()" class="cookie-btn cookie-accept">Accept</button>
+            <button onclick="declineCookies()" class="cookie-btn cookie-decline">Decline</button>
+        </div>
+    </div>
+
     <section class="hero">
         <div class="hero-content">
             <div class="hero-label">Simplified • Streamlined • Optimized</div>
-            <h1>
-                We Architect the <span class="highlight">Future</span> of Enterprise Work
-            </h1>
+            <h1>We Architect the <span class="highlight">Future</span> of Enterprise Work</h1>
             <p class="hero-subtitle">
                 Elite ServiceNow expertise combining executive-level strategy with technical mastery. 
                 From foundational data integrity to custom business applications, we deliver results without the chaos.
@@ -912,21 +962,15 @@
             <div class="approach-visual fade-in">
                 <div class="visual-box">
                     <div class="visual-title">Configuration First</div>
-                    <p class="visual-text">
-                        We prioritize Out-of-the-Box functionality to ensure seamless future upgrades.
-                    </p>
+                    <p class="visual-text">We prioritize Out-of-the-Box functionality to ensure seamless future upgrades.</p>
                 </div>
                 <div class="visual-box">
                     <div class="visual-title">OOTB Restoration</div>
-                    <p class="visual-text">
-                        Build for the next upgrade, not just the current one. Reduce customization debt for long-term platform health.
-                    </p>
+                    <p class="visual-text">Build for the next upgrade, not just the current one. Reduce customization debt for long-term platform health.</p>
                 </div>
                 <div class="visual-box">
                     <div class="visual-title">No Hard-Coding</div>
-                    <p class="visual-text">
-                        Strict adherence to System Properties over hard-coded values. Clean, maintainable code standards.
-                    </p>
+                    <p class="visual-text">Strict adherence to System Properties over hard-coded values. Clean, maintainable code standards.</p>
                 </div>
             </div>
             <div class="approach-content fade-in">
@@ -939,28 +983,19 @@
                     <li>
                         <div class="point-content">
                             <div class="point-title">Precision Planning</div>
-                            <div class="point-description">
-                                Discovery workshops mapping vision, governance, processes, and technical foundations 
-                                before a single line of configuration.
-                            </div>
+                            <div class="point-description">Discovery workshops mapping vision, governance, processes, and technical foundations before configuration.</div>
                         </div>
                     </li>
                     <li>
                         <div class="point-content">
                             <div class="point-title">Agile Delivery</div>
-                            <div class="point-description">
-                                2-week sprints with Friday demos. Complete transparency into progress, 
-                                blockers, and results.
-                            </div>
+                            <div class="point-description">2-week sprints with Friday demos. Complete transparency into progress, blockers, and results.</div>
                         </div>
                     </li>
                     <li>
                         <div class="point-content">
                             <div class="point-title">Outcome Focused</div>
-                            <div class="point-description">
-                                Success measured by business KPIs like MTTR and CSAT, 
-                                not just technical Go-Live dates.
-                            </div>
+                            <div class="point-description">Success measured by business KPIs like MTTR and CSAT, not just technical Go-Live dates.</div>
                         </div>
                     </li>
                 </ul>
@@ -993,9 +1028,7 @@
                 </div>
             </div>
             <div class="testimonial">
-                <p class="testimonial-text">
-                    "EliteNow Consulting didn't just give us a new tool; they gave us a new way of working."
-                </p>
+                <p class="testimonial-text">"EliteNow Consulting didn't just give us a new tool; they gave us a new way of working."</p>
                 <p class="testimonial-author">— Director of IT Operations</p>
             </div>
         </div>
@@ -1004,10 +1037,7 @@
     <section id="contact" class="cta-section">
         <div class="cta-container fade-in">
             <h2>Ready to Architect Your Future?</h2>
-            <p>
-                Let's discuss how EliteNow Consulting can transform your ServiceNow instance 
-                from technical debt into strategic advantage.
-            </p>
+            <p>Let's discuss how EliteNow Consulting can transform your ServiceNow instance from technical debt into strategic advantage.</p>
             <div class="cta-group" style="justify-content: center;">
                 <a href="https://calendar.app.google/n78DvHh7mN5JaQhx7" target="_blank" class="btn btn-primary">Schedule Discovery Call</a>
                 <a href="#services" class="btn btn-secondary">Learn More</a>
@@ -1019,11 +1049,7 @@
         <div class="footer-container">
             <div class="footer-brand">
                 <h3>EliteNow</h3>
-                <p>
-                    Transforming the enterprise through elite ServiceNow expertise. 
-                    We combine executive-level strategy with technical mastery to build 
-                    resilient, high-performance ecosystems.
-                </p>
+                <p>Transforming the enterprise through elite ServiceNow expertise. We combine executive-level strategy with technical mastery.</p>
             </div>
             <div class="footer-section">
                 <h4>Services</h4>
@@ -1038,21 +1064,14 @@
                 <h4>Contact</h4>
                 <ul class="footer-links">
                     <li><a href="tel:619-800-4731">Direct: 619-800-4731</a></li>
-                    <!-- ✅ FIXED: mailto opens default email client with pre-filled subject + body -->
-                    <li>
-                        <a id="partner-email-link"
-                           href="mailto:partners@elitenowconsulting.com?subject=Partnership%20Inquiry%3A%20%5BYour%20Company%20Name%5D%20x%20EliteNow%20Consulting&body=Hi%20EliteNow%20Team%2C%0A%0AI%27m%20interested%20in%20exploring%20a%20potential%20partnership%20between%20%5BMy%20Company%20Name%5D%20and%20EliteNow%20Consulting.%0A%0AI%27d%20love%20to%20share%20more%20about%20what%20we%20do%20and%20discuss%20how%20we%20might%20work%20together.%0A%0ABest%20regards%2C%0AJenn%20Pais">
-                            partners@elitenowconsulting.com
-                        </a>
-                    </li>
-                    <!-- ✅ FIXED: Opens HubSpot form in white-background modal -->
+                    <li><a id="partner-email-link" href="mailto:partners@elitenowconsulting.com?subject=Partnership%20Inquiry&body=Hi%20EliteNow%20Team...">partners@elitenowconsulting.com</a></li>
                     <li><a href="#" id="contact-form-link">Contact Form</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Certifications</h4>
                 <ul class="footer-links">
-                    <li>ServiceNow Certified System Administrator (CSA)</li>
+                    <li>ServiceNow CSA</li>
                     <li>ITIL v4 Foundations</li>
                 </ul>
             </div>
@@ -1062,7 +1081,6 @@
         </div>
     </footer>
 
-    <!-- Contact Modal — white background with HubSpot hs-form-frame embed -->
     <div id="contact-modal" class="contact-modal">
         <div class="contact-modal-content">
             <button class="modal-close" id="modal-close">&times;</button>
@@ -1071,98 +1089,67 @@
                 <p>Fill out the form below and we'll be in touch shortly.</p>
             </div>
             <script src="https://js-na2.hsforms.net/forms/embed/245483840.js" defer></script>
-            <div class="hs-form-frame"
-                 data-region="na2"
-                 data-form-id="17a55b64-5697-4bed-a745-0d2bfbb2e5b7"
-                 data-portal-id="245483840">
-            </div>
+            <div class="hs-form-frame" data-region="na2" data-form-id="17a55b64-5697-4bed-a745-0d2bfbb2e5b7" data-portal-id="245483840"></div>
         </div>
     </div>
 
     <script>
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+        // --- Cookie Consent Logic ---
+        function acceptCookies() {
+            gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'analytics_storage': 'granted'
+            });
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'accepted');
+        }
 
+        function declineCookies() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookieConsent', 'declined');
+        }
+
+        // --- Intersection Observer for Animations ---
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach((el) => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
-        // Smooth scroll — only fires on pure # hash anchors, never touches mailto: links
+        // --- Smooth Scroll & Modal Logic ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 if (href.startsWith('#') && href.length > 1) {
                     e.preventDefault();
                     const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
+                    if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
                 }
             });
         });
 
-        // ✅ FIX: Explicitly wire the mailto link so nothing can intercept it
-        document.getElementById('partner-email-link').addEventListener('click', function(e) {
-            e.stopPropagation();
-            window.location.href = this.getAttribute('href');
-        });
-
-        // Contact Modal
-        const contactModal    = document.getElementById('contact-modal');
+        const contactModal = document.getElementById('contact-modal');
         const contactFormLink = document.getElementById('contact-form-link');
-        const modalClose      = document.getElementById('modal-close');
+        const modalClose = document.getElementById('modal-close');
 
-        // Open modal
-        contactFormLink.addEventListener('click', function(e) {
+        contactFormLink.addEventListener('click', (e) => {
             e.preventDefault();
-            e.stopPropagation();
             contactModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
 
-        // Close via × button
-        modalClose.addEventListener('click', function() {
+        modalClose.addEventListener('click', () => {
             contactModal.classList.remove('active');
             document.body.style.overflow = '';
         });
 
-        // Close by clicking dark backdrop
-        contactModal.addEventListener('click', function(e) {
-            if (e.target === contactModal) {
-                contactModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Close with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
-                contactModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Auto-close 2s after HubSpot form is submitted
-        window.addEventListener('message', function(e) {
-            if (e.data.type === 'hsFormCallback' && e.data.eventName === 'onFormSubmitted') {
-                setTimeout(function() {
-                    contactModal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }, 2000);
+        // Initialize Cookie Banner & Check Storage
+        window.addEventListener('load', () => {
+            if (!localStorage.getItem('cookieConsent')) {
+                document.getElementById('cookie-banner').style.display = 'block';
             }
         });
     </script>
