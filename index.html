@@ -124,12 +124,7 @@
             margin-top: -0.25rem;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
-
+        .nav-links { display: flex; gap: 3rem; list-style: none; }
         .nav-links a {
             color: var(--steel);
             text-decoration: none;
@@ -347,7 +342,7 @@
         .point-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--electric-blue); margin-bottom: 0.5rem; }
         .point-description { color: var(--steel); }
 
-        /* Case Study */
+        /* Case Study Section */
         .case-study { padding: 8rem 5%; background: linear-gradient(180deg, rgba(0, 212, 255, 0.05), transparent); }
         .case-container { max-width: 1200px; margin: 0 auto; padding: 4rem; background: rgba(26, 31, 58, 0.6); border: 1px solid rgba(0, 212, 255, 0.2); backdrop-filter: blur(10px); }
         .case-header { margin-bottom: 3rem; }
@@ -398,6 +393,7 @@
             border-radius: 8px;
             backdrop-filter: blur(10px);
             animation: slideUpBanner 0.5s ease-out;
+            text-align: center;
         }
 
         @keyframes slideUpBanner {
@@ -406,23 +402,15 @@
         }
 
         .cookie-btn-group { display: flex; gap: 1rem; margin-top: 1rem; justify-content: center; }
-        .cookie-btn { padding: 0.6rem 1.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: 0.3s; }
-        .cookie-accept { background: var(--electric-blue); color: var(--midnight); border: none; font-weight: 700; }
+        .cookie-btn { padding: 0.6rem 1.5rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: 0.3s; border: none; }
+        .cookie-accept { background: var(--electric-blue); color: var(--midnight); font-weight: 700; }
         .cookie-decline { background: transparent; color: var(--steel); border: 1px solid var(--steel); }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 3rem; }
-            .approach-container, .footer-container { grid-template-columns: 1fr; }
-            .case-results { grid-template-columns: 1fr; gap: 2rem; }
-            .stats-container { grid-template-columns: 1fr; }
-        }
 
         /* Scroll animations */
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+        /* Modal styling */
         .contact-modal {
             display: none;
             position: fixed;
@@ -439,7 +427,6 @@
         .contact-modal.active { display: flex; align-items: center; justify-content: center; }
         .contact-modal-content {
             background: #ffffff;
-            border: none;
             border-radius: 12px;
             padding: 3rem;
             max-width: 700px;
@@ -451,7 +438,7 @@
 
         @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         .modal-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; color: #333333; font-size: 2rem; cursor: pointer; line-height: 1; }
-        .modal-header { margin-bottom: 1.5rem; padding-right: 2rem; }
+        .modal-header { margin-bottom: 1.5rem; }
         .modal-header h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: #0a0e27; }
         .modal-header p { color: #555555; }
     </style>
@@ -528,22 +515,22 @@
             <div class="service-card fade-in">
                 <div class="service-icon">⚡</div>
                 <h3 class="service-title">IT Service Management</h3>
-                <p class="service-description">Enterprise-scale ITSM implementations, Service Portal design, and automated incident routing.</p>
+                <p class="service-description">Enterprise-scale ITSM implementations, Service Portal design, and automated incident routing. We build service operations that agents actually want to use.</p>
             </div>
             <div class="service-card fade-in" style="animation-delay: 0.2s;">
                 <div class="service-icon">🔗</div>
                 <h3 class="service-title">Strategic Integrations</h3>
-                <p class="service-description">Seamlessly connecting your enterprise ecosystem: Azure AD/Entra, Jira, Slack, Okta.</p>
+                <p class="service-description">Seamlessly connecting your enterprise ecosystem: Azure AD/Entra, Jira, Slack, Okta. ServiceNow becomes your central nervous system.</p>
             </div>
             <div class="service-card fade-in" style="animation-delay: 0.4s;">
                 <div class="service-icon">🛡️</div>
                 <h3 class="service-title">Platform Governance</h3>
-                <p class="service-description">Technical debt audits, upgrade readiness assessments, and OOTB restoration.</p>
+                <p class="service-description">Technical debt audits, upgrade readiness assessments, and OOTB restoration. We ensure your platform stays healthy and future-proof.</p>
             </div>
             <div class="service-card fade-in" style="animation-delay: 0.6s;">
                 <div class="service-icon">🤖</div>
                 <h3 class="service-title">Process Automation</h3>
-                <p class="service-description">Reduce manual overhead via Flow Designer and Virtual Agent.</p>
+                <p class="service-description">Reduce manual overhead via Flow Designer and Virtual Agent. Leverage AI capabilities while maintaining human oversight.</p>
             </div>
         </div>
     </section>
@@ -557,20 +544,20 @@
                 </div>
                 <div class="visual-box">
                     <div class="visual-title">OOTB Restoration</div>
-                    <p class="visual-text">Build for the next upgrade, not just the current one. Reduce customization debt.</p>
+                    <p class="visual-text">Build for the next upgrade, not just the current one. Reduce customization debt for long-term platform health.</p>
                 </div>
                 <div class="visual-box">
                     <div class="visual-title">No Hard-Coding</div>
-                    <p class="visual-text">Strict adherence to System Properties over hard-coded values.</p>
+                    <p class="visual-text">Strict adherence to System Properties over hard-coded values. Clean, maintainable code standards.</p>
                 </div>
             </div>
             <div class="approach-content fade-in">
                 <h3>The Configuration First Mandate</h3>
-                <p style="color: var(--steel); margin-bottom: 2rem;">We architect differently, avoiding the hidden cost of over-customization.</p>
+                <p style="color: var(--steel); margin-bottom: 2rem;">The hidden cost of over-customization: upgrade blockers, process drag, and fragile code that breaks with every update. We architect differently.</p>
                 <ul class="approach-points">
-                    <li><div class="point-content"><div class="point-title">Precision Planning</div><div class="point-description">Discovery workshops mapping vision and governance.</div></div></li>
-                    <li><div class="point-content"><div class="point-title">Agile Delivery</div><div class="point-description">2-week sprints with Friday demos.</div></div></li>
-                    <li><div class="point-content"><div class="point-title">Outcome Focused</div><div class="point-description">Success measured by business KPIs.</div></div></li>
+                    <li><div class="point-content"><div class="point-title">Precision Planning</div><div class="point-description">Discovery workshops mapping vision, governance, processes, and technical foundations before a single line of configuration.</div></div></li>
+                    <li><div class="point-content"><div class="point-title">Agile Delivery</div><div class="point-description">2-week sprints with Friday demos. Complete transparency into progress, blockers, and results.</div></div></li>
+                    <li><div class="point-content"><div class="point-title">Outcome Focused</div><div class="point-description">Success measured by business KPIs like MTTR and CSAT, not just technical Go-Live dates.</div></div></li>
                 </ul>
             </div>
         </div>
@@ -588,7 +575,7 @@
             </div>
             <div class="case-results">
                 <div class="result-item"><div class="result-number">30%</div><div class="result-label">Reduction in Tickets</div></div>
-                <div class="result-item"><div class="result-number">+46</div><div class="result-label">Increase in NPS</div></div>
+                <div class="result-item"><div class="result-number">+46</div><div class="result-label">Increase in NPS Score</div></div>
                 <div class="result-item"><div class="result-number">40%</div><div class="result-label">Reduction in MTTR</div></div>
             </div>
             <div class="testimonial">
@@ -601,7 +588,7 @@
     <section id="contact" class="cta-section">
         <div class="cta-container fade-in">
             <h2>Ready to Architect Your Future?</h2>
-            <p>Let's transform your ServiceNow instance from technical debt into strategic advantage.</p>
+            <p>Let's discuss how EliteNow Consulting can transform your ServiceNow instance from technical debt into strategic advantage.</p>
             <div class="cta-group" style="justify-content: center;">
                 <a href="https://calendar.app.google/n78DvHh7mN5JaQhx7" target="_blank" class="btn btn-primary">Schedule Discovery Call</a>
                 <a href="#services" class="btn btn-secondary">Learn More</a>
@@ -613,7 +600,7 @@
         <div class="footer-container">
             <div class="footer-brand">
                 <h3>EliteNow</h3>
-                <p>Transforming the enterprise through elite ServiceNow expertise.</p>
+                <p>Transforming the enterprise through elite ServiceNow expertise. We combine executive-level strategy with technical mastery.</p>
             </div>
             <div class="footer-section">
                 <h4>Services</h4>
@@ -628,8 +615,8 @@
                 <h4>Contact</h4>
                 <ul class="footer-links">
                     <li><a href="tel:619-800-4731">Direct: 619-800-4731</a></li>
-                    <li><a id="partner-email-link" href="#" class="trigger-modal">partners@elitenowconsulting.com</a></li>
-                    <li><a href="#" id="contact-form-link" class="trigger-modal">Contact Form</a></li>
+                    <li><a href="#" class="trigger-on-site-form">partners@elitenowconsulting.com</a></li>
+                    <li><a href="#" class="trigger-on-site-form">Contact Form</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -640,9 +627,7 @@
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 EliteNow Consulting. All rights reserved.</p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2026 EliteNow Consulting. All rights reserved.</p></div>
     </footer>
 
     <div id="contact-modal" class="contact-modal">
@@ -658,71 +643,56 @@
     </div>
 
     <script>
-        // --- Cookie Consent Logic ---
+        // --- Cookie Logic ---
         function acceptCookies() {
             gtag('consent', 'update', { 'ad_storage': 'granted', 'analytics_storage': 'granted' });
             document.getElementById('cookie-banner').style.display = 'none';
             localStorage.setItem('cookieConsent', 'accepted');
         }
-
         function declineCookies() {
             document.getElementById('cookie-banner').style.display = 'none';
             localStorage.setItem('cookieConsent', 'declined');
         }
 
-        // --- Intersection Observer for Animations ---
+        // --- Animations ---
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, observerOptions);
-
         document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
-        // --- FIXED: Smooth Scroll Logic ---
-        // (Ensures mailto/tel/empty links are not hijacked)
+        // --- Smooth Scroll ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href === "#" || !href.startsWith('#')) return;
-                
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+                if (href !== "#" && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         });
 
-        // --- FIXED: Internal Email/Modal Logic ---
+        // --- FIXED Modal Trigger for Email & Form ---
         const contactModal = document.getElementById('contact-modal');
-        const modalClose = document.getElementById('modal-close');
-
-        // We use a class to target both the "Contact Form" and the "Email" link
-        document.querySelectorAll('.trigger-modal').forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
+        document.querySelectorAll('.trigger-on-site-form').forEach(btn => {
+            btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 contactModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             });
         });
-
-        modalClose.addEventListener('click', () => {
+        document.getElementById('modal-close').addEventListener('click', () => {
             contactModal.classList.remove('active');
             document.body.style.overflow = '';
         });
 
-        // Close by clicking dark backdrop
-        contactModal.addEventListener('click', function(e) {
-            if (e.target === contactModal) {
-                contactModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Initialize Cookie Banner & Check Storage
-        window.addEventListener('load', () => {
+        // Initialize
+        window.onload = () => {
             if (!localStorage.getItem('cookieConsent')) {
                 document.getElementById('cookie-banner').style.display = 'block';
             }
-        });
+        };
     </script>
 </body>
 </html>
