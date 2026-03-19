@@ -102,14 +102,14 @@
             align-items: center;
         }
 
-        /* Logo styles updated for image */
+        /* Logo styles updated for larger image */
         .logo {
             display: flex;
             align-items: center;
         }
 
         .logo img {
-            height: 45px; /* Adjust height as needed to fit your nav */
+            height: 100px; /* Set to at least 1 inch / align with large 'W' beneath */
             width: auto;
             display: block;
         }
@@ -801,9 +801,9 @@
             transform: translateX(-50%);
             width: 90%;
             max-width: 600px;
-            background: var(--deep-navy);
-            border: 1px solid var(--electric-blue);
-            color: var(--soft-white);
+            background: #1a1f3a;
+            border: 1px solid #00d4ff;
+            color: #f8f9fc;
             padding: 1.5rem;
             z-index: 10000;
             box-shadow: 0 10px 40px rgba(0,0,0,0.8);
@@ -831,22 +831,22 @@
         }
 
         .cookie-accept {
-            background: var(--electric-blue);
-            color: var(--midnight);
+            background: #00d4ff;
+            color: #0a0e27;
             font-weight: 700;
         }
 
         .cookie-decline {
             background: transparent;
-            color: var(--steel);
-            border: 1px solid var(--steel);
+            color: #8892b0;
+            border: 1px solid #8892b0;
         }
     </style>
 </head>
 <body>
     
     <div id="cookie-banner">
-        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--electric-blue);">[Privacy Protocol]</p>
+        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; margin-bottom: 0.5rem; color: #00d4ff;">[Privacy Protocol]</p>
         <p>We use cookies to analyze traffic and optimize your platform experience. By clicking "Accept", you consent to our use of analytics.</p>
         <div class="cookie-btn-group">
             <button onclick="acceptCookies()" class="cookie-btn cookie-accept">Accept</button>
