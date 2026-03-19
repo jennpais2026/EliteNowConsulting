@@ -5,13 +5,10 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-
-      // Set default consent to 'denied' for GA4 compliance
       gtag('consent', 'default', {
         'ad_storage': 'denied',
         'analytics_storage': 'denied'
       });
-
       gtag('js', new Date());
       gtag('config', 'G-73Z8303FF2');
     </script>
@@ -32,11 +29,7 @@
             --shadow-dark: rgba(10, 14, 39, 0.8);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Crimson Pro', serif;
@@ -48,13 +41,8 @@
 
         /* Animated background */
         .bg-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.03;
-            z-index: -1;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.03; z-index: -1;
             background-image: 
                 linear-gradient(30deg, var(--electric-blue) 12%, transparent 12.5%, transparent 87%, var(--electric-blue) 87.5%, var(--electric-blue)),
                 linear-gradient(150deg, var(--electric-blue) 12%, transparent 12.5%, transparent 87%, var(--electric-blue) 87.5%, var(--electric-blue)),
@@ -65,185 +53,113 @@
             animation: patternShift 60s linear infinite;
         }
 
-        @keyframes patternShift {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(140px); }
-        }
+        @keyframes patternShift { 0% { transform: translateY(0); } 100% { transform: translateY(140px); } }
 
         /* Navigation */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 5%;
-            background: rgba(10, 14, 39, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
-            z-index: 1000;
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            position: fixed; top: 0; width: 100%; padding: 1.5rem 5%;
+            background: rgba(10, 14, 39, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1); z-index: 1000;
         }
 
         .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            max-width: 1400px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
         }
 
         .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            background: var(--soft-white);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800;
+            background: var(--soft-white); padding: 0.5rem 1rem; border-radius: 4px;
         }
 
         .logo-elite { color: var(--midnight); }
-        .logo-now {
+        .logo-now { 
             background: linear-gradient(135deg, var(--electric-blue), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
         .logo-consulting {
-            color: var(--steel);
-            font-size: 0.75rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            display: block;
-            margin-top: -0.25rem;
+            color: var(--steel); font-size: 0.75rem; font-weight: 400;
+            text-transform: uppercase; letter-spacing: 0.2em; display: block; margin-top: -0.25rem;
         }
 
         .nav-links { display: flex; gap: 3rem; list-style: none; }
         .nav-links a {
-            color: var(--steel);
-            text-decoration: none;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-            position: relative;
+            color: var(--steel); text-decoration: none; font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem; text-transform: uppercase; transition: all 0.3s ease;
         }
         .nav-links a:hover { color: var(--electric-blue); }
 
         /* Cookie Banner */
         #cookie-banner {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 500px;
-            background: var(--deep-navy);
-            border: 1px solid var(--electric-blue);
-            color: var(--soft-white);
-            padding: 1.5rem;
-            z-index: 9999;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            text-align: center;
+            display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 600px; background: var(--deep-navy);
+            border: 1px solid var(--electric-blue); padding: 1.5rem; z-index: 10000;
+            border-radius: 8px; backdrop-filter: blur(10px); text-align: center;
         }
 
         .cookie-btn {
-            padding: 0.5rem 1.5rem;
-            margin: 10px 5px 0;
-            cursor: pointer;
-            font-family: 'IBM Plex Mono', monospace;
-            border-radius: 4px;
-            border: none;
-            transition: 0.3s;
+            padding: 0.6rem 1.5rem; font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem; text-transform: uppercase; cursor: pointer;
+            border-radius: 4px; border: none; transition: 0.3s; margin: 5px;
         }
-
-        .cookie-accept { background: var(--electric-blue); color: var(--midnight); font-weight: bold; }
+        .cookie-accept { background: var(--electric-blue); color: var(--midnight); font-weight: 700; }
         .cookie-decline { background: transparent; color: var(--steel); border: 1px solid var(--steel); }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 5% 4rem;
-            position: relative;
-        }
-
+        /* Sections */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 5% 4rem; }
         .hero h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(3rem, 8vw, 6.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            letter-spacing: -0.03em;
+            font-family: 'Syne', sans-serif; font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 800; line-height: 1.1; margin-bottom: 2rem;
         }
-
         .hero h1 .highlight {
             background: linear-gradient(135deg, var(--electric-blue), var(--accent-cyan), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
-            font-family: 'IBM Plex Mono', monospace;
-            text-transform: uppercase;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
+            padding: 1rem 2.5rem; font-family: 'IBM Plex Mono', monospace;
+            text-transform: uppercase; text-decoration: none; transition: 0.3s; display: inline-block;
         }
-
         .btn-primary { background: var(--electric-blue); color: var(--midnight); font-weight: 600; }
         .btn-secondary { border: 2px solid var(--electric-blue); color: var(--electric-blue); margin-left: 1rem; }
 
-        /* Stats & Services */
         .stats { padding: 6rem 5%; background: rgba(0, 212, 255, 0.05); }
         .stats-container {
             max-width: 1400px; margin: 0 auto;
             display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;
         }
-        .stat-item { text-align: center; padding: 2rem; border: 1px solid rgba(0, 212, 255, 0.2); }
-        .stat-number { font-size: 4rem; font-weight: 800; color: var(--electric-blue); font-family: 'Syne', sans-serif; }
+        .stat-item { text-align: center; padding: 2rem; border: 1px solid rgba(0, 212, 255, 0.2); background: rgba(26, 31, 58, 0.4); }
+        .stat-number { font-family: 'Syne', sans-serif; font-size: 4rem; font-weight: 800; color: var(--electric-blue); }
 
         .services { padding: 8rem 5%; background: var(--deep-navy); }
         .services-grid {
             max-width: 1400px; margin: 0 auto;
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
         }
-        .service-card { padding: 3rem; background: rgba(10, 14, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.1); }
-        .service-title { color: var(--electric-blue); font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-bottom: 1rem; }
+        .service-card { padding: 3rem; background: rgba(10, 14, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.1); transition: 0.4s; }
+        .service-card:hover { border-color: var(--electric-blue); transform: translateY(-5px); }
+        .service-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--electric-blue); margin-bottom: 1rem; }
 
-        /* Footer */
+        /* Modal */
+        .contact-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 14, 39, 0.85); backdrop-filter: blur(10px); z-index: 2000;
+            align-items: center; justify-content: center; overflow-y: auto;
+        }
+        .contact-modal.active { display: flex; }
+        .contact-modal-content { background: #ffffff; border-radius: 12px; padding: 3rem; max-width: 700px; width: 90%; position: relative; color: #333; }
+        .modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; border: none; background: none; color: #333; }
+
         footer { padding: 4rem 5%; border-top: 1px solid rgba(0, 212, 255, 0.1); }
         .footer-container {
             max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem;
         }
-        .footer-links { list-style: none; }
+        .footer-links { list-style: none; margin-top: 1rem; }
         .footer-links a { color: var(--steel); text-decoration: none; transition: 0.3s; }
         .footer-links a:hover { color: var(--electric-blue); }
 
-        /* Modal Styles */
-        .contact-modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 14, 39, 0.9); z-index: 2000; align-items: center; justify-content: center;
-        }
-        .contact-modal.active { display: flex; }
-        .contact-modal-content { background: white; border-radius: 12px; padding: 3rem; max-width: 700px; width: 90%; position: relative; color: #333; }
-        .modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; border: none; background: none; color: #333; }
-
-        /* Animations */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
@@ -266,17 +182,18 @@
     </nav>
 
     <div id="cookie-banner">
-        <p>We use cookies to analyze site traffic and improve your experience. Accept to allow Google Analytics tracking.</p>
+        <p style="font-family: 'IBM Plex Mono', monospace; color: var(--electric-blue); margin-bottom: 0.5rem;">[Privacy Protocol]</p>
+        <p>We use cookies to analyze traffic and optimize your platform experience.</p>
         <button onclick="acceptCookies()" class="cookie-btn cookie-accept">Accept</button>
         <button onclick="declineCookies()" class="cookie-btn cookie-decline">Decline</button>
     </div>
 
     <section class="hero">
         <div class="hero-content">
-            <div style="font-family: 'IBM Plex Mono', monospace; color: var(--electric-blue); margin-bottom: 1rem;">Simplified • Streamlined • Optimized</div>
+            <div style="font-family: 'IBM Plex Mono'; color: var(--electric-blue); margin-bottom: 1rem;">Simplified • Streamlined • Optimized</div>
             <h1>We Architect the <span class="highlight">Future</span> of Enterprise Work</h1>
-            <p style="font-size: 1.5rem; color: var(--steel); max-width: 700px; margin-bottom: 3rem;">
-                Elite ServiceNow expertise combining executive-level strategy with technical mastery. Deliver results without the chaos.
+            <p style="font-size: 1.5rem; color: var(--steel); max-width: 750px; margin-bottom: 3rem;">
+                Elite ServiceNow expertise combining executive-level strategy with technical mastery. From foundational data integrity to custom business applications.
             </p>
             <div class="cta-group">
                 <a href="https://calendar.app.google/n78DvHh7mN5JaQhx7" target="_blank" class="btn btn-primary">Schedule Discovery</a>
@@ -306,15 +223,15 @@
         <div class="services-grid">
             <div class="service-card fade-in">
                 <h3 class="service-title">IT Service Management</h3>
-                <p>Enterprise-scale ITSM implementations and Service Portal design that agents actually want to use.</p>
+                <p style="color: var(--steel);">Enterprise-scale ITSM implementations, Service Portal design, and automated incident routing.</p>
+            </div>
+            <div class="service-card fade-in">
+                <h3 class="service-title">Strategic Integrations</h3>
+                <p style="color: var(--steel);">Seamlessly connecting Azure AD/Entra, Jira, Slack, and Okta to your ServiceNow ecosystem.</p>
             </div>
             <div class="service-card fade-in">
                 <h3 class="service-title">Platform Governance</h3>
-                <p>Technical debt audits and upgrade readiness assessments to future-proof your instance.</p>
-            </div>
-            <div class="service-card fade-in">
-                <h3 class="service-title">Process Automation</h3>
-                <p>Reduce manual overhead via Flow Designer and AI-driven Virtual Agents.</p>
+                <p style="color: var(--steel);">Technical debt audits and OOTB restoration to ensure your platform stays future-proof.</p>
             </div>
         </div>
     </section>
@@ -322,15 +239,21 @@
     <footer id="contact">
         <div class="footer-container">
             <div>
-                <h3 style="color: var(--electric-blue); margin-bottom: 1rem; font-family: 'Syne';">EliteNow</h3>
-                <p style="color: var(--steel);">Transforming the enterprise through elite ServiceNow expertise.</p>
+                <h3 style="font-family: 'Syne'; color: var(--electric-blue);">EliteNow</h3>
+                <p style="color: var(--steel); margin-top: 1rem;">Elite ServiceNow expertise for the modern enterprise.</p>
             </div>
             <div>
-                <h4 style="font-family: 'IBM Plex Mono'; color: var(--electric-blue); margin-bottom: 1rem;">Contact</h4>
+                <h4 style="font-family: 'IBM Plex Mono'; color: var(--electric-blue);">Contact</h4>
                 <ul class="footer-links">
                     <li><a href="tel:619-800-4731">Direct: 619-800-4731</a></li>
-                    <li><a href="mailto:partners@elitenowconsulting.com">partners@elitenowconsulting.com</a></li>
-                    <li><a href="#" id="contact-form-link">Contact Form</a></li>
+                    <li><a href="#" class="open-modal-trigger">partners@elitenowconsulting.com</a></li>
+                    <li><a href="#" class="open-modal-trigger">Contact Form</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-family: 'IBM Plex Mono'; color: var(--electric-blue);">Legal</h4>
+                <ul class="footer-links">
+                    <li>&copy; 2026 EliteNow</li>
                 </ul>
             </div>
         </div>
@@ -339,16 +262,17 @@
     <div id="contact-modal" class="contact-modal">
         <div class="contact-modal-content">
             <button class="modal-close" id="modal-close">&times;</button>
-            <h2 style="margin-bottom: 1rem; font-family: 'Syne';">Get In Touch</h2>
+            <h2 style="font-family: 'Syne'; margin-bottom: 0.5rem;">Get In Touch</h2>
+            <p style="margin-bottom: 1.5rem; color: #666;">Fill out the form below and our team will be in touch shortly.</p>
             <script src="https://js-na2.hsforms.net/forms/embed/245483840.js" defer></script>
             <div class="hs-form-frame" data-region="na2" data-form-id="17a55b64-5697-4bed-a745-0d2bfbb2e5b7" data-portal-id="245483840"></div>
         </div>
     </div>
 
     <script>
-        // --- Cookie Consent ---
+        // Cookie Consent Logic
         function acceptCookies() {
-            gtag('consent', 'update', { 'ad_storage': 'granted', 'analytics_storage': 'granted' });
+            gtag('consent', 'update', { 'analytics_storage': 'granted' });
             document.getElementById('cookie-banner').style.display = 'none';
             localStorage.setItem('cookieConsent', 'accepted');
         }
@@ -357,47 +281,43 @@
             localStorage.setItem('cookieConsent', 'declined');
         }
 
-        // --- FIXED Smooth Scroll (Doesn't break mailto) ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                // Only act on internal # links, ignore mailto: or tel:
-                if (href.startsWith('#') && href.length > 1) {
-                    const target = document.querySelector(href);
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
+        // Modal Logic - Integrated for Email + Form
+        const modal = document.getElementById('contact-modal');
+        document.querySelectorAll('.open-modal-trigger').forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
         });
 
-        // --- Contact Modal ---
-        const contactModal = document.getElementById('contact-modal');
-        document.getElementById('contact-form-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            contactModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
         document.getElementById('modal-close').addEventListener('click', () => {
-            contactModal.classList.remove('active');
+            modal.classList.remove('active');
             document.body.style.overflow = '';
         });
 
-        // --- Page Init ---
+        // Smooth Scroll & Initialization
         window.addEventListener('load', () => {
-            // Show cookie banner if no choice made
             if (!localStorage.getItem('cookieConsent')) {
                 document.getElementById('cookie-banner').style.display = 'block';
             }
             
-            // Trigger Fade-ins
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
             }, { threshold: 0.1 });
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== "#" && href.startsWith("#")) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
     </script>
 </body>
