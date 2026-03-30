@@ -102,14 +102,14 @@
             align-items: center;
         }
 
-        /* Logo styles updated for larger image */
+        /* Logo styles */
         .logo {
             display: flex;
             align-items: center;
         }
 
         .logo img {
-            height: 100px; /* Set to at least 1 inch / align with large 'W' beneath */
+            height: 100px;
             width: auto;
             display: block;
         }
@@ -678,6 +678,23 @@
             color: var(--steel);
         }
 
+        /* Policy Link Styles */
+        .policy-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .policy-links a {
+            color: var(--steel);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .policy-links a:hover {
+            color: var(--electric-blue);
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .nav-links {
@@ -700,6 +717,16 @@
 
             .stats-container {
                 grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .policy-links {
+                justify-content: center;
             }
         }
 
@@ -1095,6 +1122,11 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 EliteNow Consulting. All rights reserved.</p>
+            <div class="policy-links">
+                <a href="terms-of-use.pdf" target="_blank" download>Terms of Use</a>
+                <a href="privacy-policy.pdf" target="_blank" download>Privacy Policy</a>
+                <a href="cookie-policy.pdf" target="_blank" download>Cookie Policy</a>
+            </div>
         </div>
     </footer>
 
@@ -1188,4 +1220,3 @@
     </script>
 </body>
 </html>
-
