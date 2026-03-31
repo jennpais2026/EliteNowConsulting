@@ -324,6 +324,50 @@
             color: var(--steel);
         }
 
+        /* NEW STRATEGIC PARTNER SECTION STYLES */
+        .strategic-partner {
+            padding: 8rem 5%;
+            background: var(--midnight);
+        }
+
+        .partner-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .partner-text h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .partner-text p {
+            font-size: 1.3rem;
+            color: var(--steel);
+            margin-bottom: 2rem;
+        }
+
+        .highlight-box {
+            border-left: 4px solid var(--gold);
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.05);
+            margin-top: 3rem;
+        }
+
+        .highlight-box h3 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
         /* Services Section */
         .services {
             padding: 8rem 5%;
@@ -705,6 +749,7 @@
                 font-size: 3rem;
             }
 
+            .partner-grid,
             .approach-container,
             .footer-container {
                 grid-template-columns: 1fr;
@@ -889,6 +934,7 @@
                 <img src="EliteNowC_logowhiteSleft.png" alt="EliteNow Consulting Logo">
             </div>
             <ul class="nav-links">
+                <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#approach">Approach</a></li>
                 <li><a href="#results">Results</a></li>
@@ -931,6 +977,36 @@
             <div class="stat-item fade-in" style="animation-delay: 0.6s;">
                 <div class="stat-number">100%</div>
                 <div class="stat-label">OOTB Aligned</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="strategic-partner">
+        <div class="partner-grid">
+            <div class="partner-text fade-in">
+                <span class="hero-label">The Strategic Partner Advantage</span>
+                <h2>Personal Accountability. <br>Elite Results.</h2>
+                <p>
+                    I founded EliteNow Consulting after years inside the corporate machine, watching companies struggle to get full use of their ServiceNow platform. Most organizations own a Ferrari but drive it like a golf cart because they lack a strategic roadmap.
+                </p>
+                <p>
+                    I left the corporate world to offer a better way: a boutique partnership where you get direct access to senior expertise. We specialize in helping small-to-medium businesses navigate <strong>ITSM, NowAssist, CMDB, IRM, and ITOM</strong> implementation with precision.
+                </p>
+                <div class="highlight-box">
+                    <h3>The Elite Standard</h3>
+                    <p>We don't just "install" software. We architect workflows that drive efficiency, reduce technical debt, and ensure you get the results you were promised.</p>
+                </div>
+            </div>
+            <div class="partner-visual fade-in">
+                <div style="background: rgba(0, 212, 255, 0.05); padding: 3rem; border: 1px solid var(--electric-blue);">
+                    <h3 style="font-family: 'Syne'; font-size: 2rem; margin-bottom: 1.5rem; color: var(--soft-white);">Why EliteNow?</h3>
+                    <ul style="list-style: none; font-size: 1.2rem; color: var(--steel);">
+                        <li style="margin-bottom: 1rem;"><strong style="color: var(--electric-blue);">✓ No "Shelfware":</strong> We ensure every module is used to its full capability.</li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: var(--electric-blue);">✓ Strategic Partner:</strong> We align your technical build with your business goals.</li>
+                        <li style="margin-bottom: 1rem;"><strong style="color: var(--electric-blue);">✓ Quality Guaranteed:</strong> We focus on "getting it right" and absolute customer satisfaction.</li>
+                    </ul>
+                    <a href="https://calendar.app.google/n78DvHh7mN5JaQhx7" target="_blank" class="btn btn-primary" style="margin-top: 2rem; width: 100%; text-align: center; display: block; box-sizing: border-box;">Book Your Discovery Call</a>
+                </div>
             </div>
         </div>
     </section>
