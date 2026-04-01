@@ -173,10 +173,6 @@ footer { padding: 4rem 5%; border-top: 1px solid rgba(0, 212, 255, 0.1); }
 .footer-links li { margin-bottom: 0.8rem; }
 .footer-links a { color: var(--steel); text-decoration: none; transition: color 0.3s ease; }
 .footer-links a:hover { color: var(--electric-blue); }
-.footer-bottom { max-width: 1400px; margin: 3rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(0, 212, 255, 0.1); display: flex; justify-content: space-between; align-items: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--steel); }
-.policy-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-.policy-links a { color: var(--steel); text-decoration: none; transition: color 0.3s ease; }
-.policy-links a:hover { color: var(--electric-blue); }
 
 @media (max-width: 968px) {
     .nav-links { display: none; }
@@ -184,8 +180,6 @@ footer { padding: 4rem 5%; border-top: 1px solid rgba(0, 212, 255, 0.1); }
     .partner-grid, .approach-container, .footer-container { grid-template-columns: 1fr; }
     .case-results { grid-template-columns: 1fr; gap: 2rem; }
     .stats-container { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
-    .policy-links { justify-content: center; }
 }
 
 .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -199,8 +193,8 @@ footer { padding: 4rem 5%; border-top: 1px solid rgba(0, 212, 255, 0.1); }
 .modal-close:hover { color: #000000; }
 .modal-header { margin-bottom: 1.5rem; padding-right: 2rem; }
 .modal-header h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; margin-bottom: 0.4rem; color: #0a0e27; }
-    .modal-header p { color: #555555; font-size: 1rem; }
-    .contact-modal-content .hs-form-frame, .contact-modal-content .hs-form { color: #111111 !important; }
+.modal-header p { color: #555555; font-size: 1rem; }
+.contact-modal-content .hs-form-frame, .contact-modal-content .hs-form { color: #111111 !important; }
 
 #cookie-banner { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 600px; background: #1a1f3a; border: 1px solid #00d4ff; color: #f8f9fc; padding: 1.5rem; z-index: 10000; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border-radius: 8px; backdrop-filter: blur(10px); text-align: center; }
 .cookie-btn-group { display: flex; gap: 1rem; margin-top: 1rem; justify-content: center; }
@@ -214,20 +208,6 @@ footer { padding: 4rem 5%; border-top: 1px solid rgba(0, 212, 255, 0.1); }
     justify-content: center;
     gap: 2.5rem;
     margin: 2.5rem 0; 
-}
-
-.centered-social-links a {
-    color: var(--steel);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.centered-social-links a:hover {
-    color: var(--electric-blue);
-    transform: scale(1.15); /* Subtle pop effect */
-    filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.5));
 }
 
 /* --- PERFECTLY CENTERED FOOTER BOTTOM --- */
@@ -254,20 +234,6 @@ footer { padding: 4rem 5%; border-top: 1px solid rgba(0, 212, 255, 0.1); }
     justify-self: center; /* Locks to the exact center */
 }
 
-.footer-socials a {
-    color: var(--steel);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.footer-socials a:hover {
-    color: var(--electric-blue);
-    transform: translateY(-3px);
-    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
-}
-
 .policy-links {
     display: flex;
     gap: 1.5rem;
@@ -275,17 +241,34 @@ footer { padding: 4rem 5%; border-top: 1px solid rgba(0, 212, 255, 0.1); }
     justify-self: end; /* Locks to the right */
 }
 
+/* --- OVERRIDE DEFAULT BROWSER LINK COLORS FOR ALL LINKS IN FOOTER/SOCIALS --- */
+.centered-social-links a,
+.footer-socials a,
 .policy-links a {
-    color: var(--steel);
-    text-decoration: none;
-    transition: color 0.3s ease;
+    color: var(--steel) !important; /* Forces the light gray-blue color */
+    text-decoration: none !important; /* Removes the blue underline */
+    transition: all 0.3s ease;
+}
+
+.centered-social-links a,
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centered-social-links a:hover,
+.footer-socials a:hover {
+    color: var(--electric-blue) !important; /* Pops to bright cyan on hover */
+    transform: translateY(-2px) scale(1.1); /* Subtle lift and grow effect */
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
 }
 
 .policy-links a:hover {
-    color: var(--electric-blue);
+    color: var(--electric-blue) !important;
 }
 
-/* Mobile Responsive: Stacks them neatly on small screens */
+/* Mobile Responsive for Footer Bottom */
 @media (max-width: 968px) {
     .footer-bottom {
         grid-template-columns: 1fr;
