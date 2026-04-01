@@ -229,3 +229,73 @@ footer { padding: 4rem 5%; border-top: 1px solid rgba(0, 212, 255, 0.1); }
     transform: scale(1.15); /* Subtle pop effect */
     filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.5));
 }
+
+/* --- PERFECTLY CENTERED FOOTER BOTTOM --- */
+.footer-bottom {
+    max-width: 1400px;
+    margin: 3rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 212, 255, 0.1);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* Creates 3 columns: Left, Center, Right */
+    align-items: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--steel);
+}
+
+.footer-copyright {
+    justify-self: start; /* Locks to the left */
+}
+
+.footer-socials {
+    display: flex;
+    gap: 1.5rem;
+    justify-self: center; /* Locks to the exact center */
+}
+
+.footer-socials a {
+    color: var(--steel);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-socials a:hover {
+    color: var(--electric-blue);
+    transform: translateY(-3px);
+    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+}
+
+.policy-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-self: end; /* Locks to the right */
+}
+
+.policy-links a {
+    color: var(--steel);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.policy-links a:hover {
+    color: var(--electric-blue);
+}
+
+/* Mobile Responsive: Stacks them neatly on small screens */
+@media (max-width: 968px) {
+    .footer-bottom {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    .footer-copyright, .footer-socials, .policy-links {
+        justify-self: center;
+    }
+    .policy-links {
+        justify-content: center;
+    }
+}
