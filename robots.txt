@@ -1,0 +1,29 @@
+# robots.txt for elitenowconsulting.com
+# Allow all reputable crawlers full access; point them at the sitemap.
+
+User-agent: *
+Allow: /
+Disallow: /functions/
+Disallow: /api/
+
+# Block scrapers/AI training crawlers that don't drive search traffic.
+# Remove any of these if you decide you want the exposure.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+Sitemap: https://elitenowconsulting.com/sitemap.xml
